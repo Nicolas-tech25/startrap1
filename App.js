@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import Cadastro from "./src/screens/Cadastro";
 import Login from "./src/screens/Login";
 import Home from "./src/screens/Home";
+import Logout from "./src/components/Logout";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -79,6 +80,16 @@ export default function App() {
               tabBarIcon: ({ focused, size }) => (
                 <FontAwesome name="home" size={27} color="#6f6f6f" />
               ),
+            }}
+          />
+          <Tab.Screen
+            name="Logout"
+            component={Logout}
+            options={{
+              tabBarIcon: ({ focused, size }) => (
+                <FontAwesome name="sign-out" size={27} color="#6f6f6f" />
+              ),
+              tabBarLabel: "Logout"
             }}
           />
         </Tab.Navigator>

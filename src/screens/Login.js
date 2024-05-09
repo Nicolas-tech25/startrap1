@@ -6,6 +6,7 @@ import {
     View,
     Text,
     ScrollView,
+    Image,
   } from "react-native";
   import * as React from 'react';
 //   import { Checkbox } from 'react-native-paper';
@@ -15,6 +16,7 @@ import {
     signInWithEmailAndPassword,
   } from "firebase/auth";
   import { useState } from "react";
+  import logo from "../../assets/logo.png";
   
   export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
@@ -62,7 +64,7 @@ import {
     return (
       <>
         <ScrollView style={estilos.container}>
-          <Text style={{fontWeight: "bold", fontSize: 20, textAlign: "center"}}>Faça login na sua conta</Text>
+        <Image style={estilos.logo} source={logo} />
           <View style={estilos.formulario}>
   
             <View style={estilos.inputs}>
@@ -89,16 +91,6 @@ import {
             <View>
               <View style={estilos.botaoRecuperar}>
   
-                {/* <View style={estilos.textoBotaoLembrar}>
-                <Checkbox
-                  status={checked ? 'checked' : 'unchecked'}
-                  onPress={() => {
-                    setChecked(!checked);
-                  }}
-                />
-                <Text style={estilos.textoBotaoRecuperar}>Lembra-me</Text>
-                </View> */}
-  
               <Pressable  onPress={recuperarSenha}>
                 <Text style={estilos.textoBotaoRecuperar}>Recuperar a senha</Text>
               </Pressable>
@@ -113,7 +105,7 @@ import {
                 style={estilos.textoBotaoCadastro}
                 onPress={recuperarSenha}
               >
-                <Text style={{ color: "#151515", fontWeight: "bold" }}>
+                <Text style={{ color: "#f8f8f8", fontWeight: "bold" }}>
                   Ainda não possui cadastro?{" "}
                   <Text
                     style={estilos.textoBotaoCadastro}
@@ -133,24 +125,16 @@ import {
   const estilos = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#F0F4F8",
-    },
-    background: {
-      justifyContent: "center",
-      alignContent: "center",
-      alignItems: "center",
-      width: "auto",
-      height: "35%",
+      backgroundColor: "black",
     },
     logo: {
-      marginTop: 30,
-      width: 200,
-      height: 200,
+      width: "85%",
+      height: 100,
       alignSelf: "center",
+      marginVertical: 90,
     },
     formulario: {
       padding: 15,
-      marginVertical: 25,
     },
     input: {
       borderWidth: 1,
@@ -159,21 +143,25 @@ import {
       backgroundColor: "#ffffff",
       color: "#6f6f6f",
       borderRadius: 7,
-      marginVertical: 15,
+      marginVertical: 10,
+      width:"90%",
+      marginHorizontal:10,
     },
     botoes: {
       borderWidth: 1,
       padding: 10,
-      borderColor: "#FF7E3F",
+      borderColor: "#FFDE59",
       borderRadius: 7,
       marginVertical: 10,
-      backgroundColor: "#FF7E3F",
+      width:"90%",
+      backgroundColor: "#FFDE59",
       alignItems: "center",
+      alignSelf: "center",
     },
     textoBotao: {
       fontSize: 16,
       fontWeight: "bold",
-      color: "white",
+      color: "black",
     },
     botaoRecuperar: {
       padding: 0,
@@ -181,18 +169,12 @@ import {
       justifyContent: "space-between",
       flexDirection: "row",
       marginVertical: 4,
-      alignItems: "center",
+      marginHorizontal:10,
     },
     textoBotaoRecuperar: {
       fontSize: 15,
       fontWeight: "bold",
-      color: "#6f6f6f",
-    },
-    textoBotaoLembrar: {
-      flexDirection: "row",
-      justifyContent: "space-around",
-      color: "#6f6f6f",
-      alignItems: "center",
+      color: "#f8f8f8",
     },
     botaoCadastro: {
       padding: 0,
@@ -202,12 +184,14 @@ import {
     textoBotaoCadastro: {
       fontSize: 15,
       fontWeight: "bold",
-      color: "#538dfd",
+      color: "#FFDE59",
       alignItems: "center",
     },
     titulo: {
       fontSize: 18,
       fontWeight: "bold",
+      color:"f8f8f8",
+      marginHorizontal:10,
     },
   
   });

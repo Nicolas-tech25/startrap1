@@ -16,13 +16,9 @@ export default function Cadastro({ navigation }) {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [chave, setChave] = useState("");
-  const [numero, setNumero] = useState("");
-  const [profissao, setProfissao] = useState("");
 
   const cadastrar = async () => {
-    if (!email || !senha || !nome || !chave || !profissao || !cpf || !numero) {
+    if (!email || !senha || !nome) {
       Alert.alert("Atenção!", "Preencha todos os dados");
       return;
     }
@@ -60,34 +56,6 @@ export default function Cadastro({ navigation }) {
           break;
       }
       Alert.alert("Ops!", mensagem);
-    }
-  };
-
-  const formatarCelular = (input) => {
-    let formattedInput = input.replace(/\D/g, "");
-    
-    formattedInput = formattedInput.replace(/^(\d{2})(\d{5})(\d{4})/, "($1) $2 - $3");
-
-    return formattedInput;
-  };
-
-  const handleNumeroChange = (input) => {
-    if (input.length <= 15) {
-      setNumero(formatarCelular(input));
-    }
-  };
-
-  const formatarCPF = (input) => {
-    let formattedInput = input.replace(/\D/g, "");
-
-    formattedInput = formattedInput.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-
-    return formattedInput;
-  };
-
-  const handleCPFChange = (input) => {
-    if (input.length <= 14) {
-      setCpf(formatarCPF(input));
     }
   };
 
@@ -133,49 +101,6 @@ export default function Cadastro({ navigation }) {
               onChangeText={(valor) => setEmail(valor)}
             />
           </View>
-          <View>
-            <Text style={estilos.labeltexto}>CPF</Text>
-            <TextInput
-              value={cpf}
-              onChangeText={handleCPFChange}
-              placeholder="000.000.000-00"
-              placeholderTextColor="#6f6f6f"
-              style={[estilos.input, { color: "#6f6f6f" }]}
-              keyboardType="numeric" 
-            />
-          </View>
-          <View>
-            <Text style={estilos.labeltexto}>Sua Chave Pix</Text>
-            <TextInput
-              onChangeText={(valor) => setChave(valor)}
-              placeholder="Chave pix do banco Efí"
-              placeholderTextColor="#6f6f6f"
-              style={[estilos.input, { color: "#6f6f6f" }]}
-              keyboardType="email-address"
-            />
-          </View>
-          <View>
-            <Text style={estilos.labeltexto}>Celular</Text>
-            <TextInput
-              value={numero}
-              onChangeText={handleNumeroChange}
-              placeholder="(11) 97360 - 4933"
-              placeholderTextColor="#6f6f6f"
-              style={[estilos.input, { color: "#6f6f6f" }]}
-              keyboardType="phone-pad"
-            />
-          </View>
-          <View>
-            <Text style={estilos.labeltexto}>Profissão</Text>
-            <TextInput
-              onChangeText={(valor) => setProfissao(valor)}
-              placeholder="ex: Comerciante"
-              placeholderTextColor="#6f6f6f"
-              style={[estilos.input, { color: "#6f6f6f" }]}
-              keyboardType="email-address"
-            />
-          </View>
-          <View>
             <Text style={estilos.labeltexto}>Palavra-Passe</Text>
             <TextInput
               onChangeText={(valor) => setSenha(valor)}
@@ -201,7 +126,6 @@ export default function Cadastro({ navigation }) {
               </Text>
             </View>
           </View>
-        </View>
       </ScrollView>
     </>
   );
